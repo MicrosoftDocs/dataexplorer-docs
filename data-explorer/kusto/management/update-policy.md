@@ -3,7 +3,7 @@ title: Update policy overview
 description: Learn how to trigger an update policy to add data to a source table.
 ms.reviewer: orspodek
 ms.topic: reference
-ms.date: 06/01/2026
+ms.date: 09/06/2026
 ---
 
 # Update policy overview
@@ -73,6 +73,7 @@ If the update policy is defined on the target table, multiple queries can run on
   * It can't access external data or external tables, with the following exception:
     * The query *can* reference an accelerated external table using the [`external_table()` function](../query/external-table-function.md), provided that:
       * The external table has a [query acceleration policy](query-acceleration-policy.md) enabled with a `Hot` period that covers all data (currently `Hot` >= 100 years).
+      * Authorization to access the external table is handled automatically through the update policy's `OwnerPrincipalDetails` property.
   * It can't make callouts (by using a plugin).
 
 * The query doesn't have read access to tables that have the [RestrictedViewAccess policy](restricted-view-access-policy.md) enabled.
@@ -115,7 +116,7 @@ Each such object is represented as a JSON property bag, with the following prope
 |Property |Type | Description  |
 |---------|---------|----------------|
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
-|Source |`string` |Name of the table that triggers invocation of the update policy. |
+|Source |`string` |Name of the table that triggers invocation of the update policy. This can be a native table, or, in preview, an external table of kind `delta` that has a [query acceleration policy](query-acceleration-policy.md) enabled. For more information, see [Update policy over external delta tables](#update-policy-over-external-delta-tables-preview). |
 |SourceIsWildCard |`bool` |If *true*, the `Source` property can be a wildcard pattern. See [Update policy with source table wildcard pattern](#update-policy-with-source-table-wildcard-pattern) |
 |Query |`string` |A query used to produce data for the update. |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
@@ -128,12 +129,12 @@ Each such object is represented as a JSON property bag, with the following prope
 |Property |Type |Description  |
 |---------|---------|----------------|
 |IsEnabled  |`bool` |States if update policy is *true* - enabled, or *false* - disabled|
-|Source |`string` |Name of the table that triggers invocation of the update policy |
+|Source |`string` |Name of the table that triggers invocation of the update policy. This can be a native table, or, in preview, an external table of kind `delta` that has a [query acceleration policy](query-acceleration-policy.md) enabled. For more information, see [Update policy over external delta tables](#update-policy-over-external-delta-tables-preview). |
 |SourceIsWildCard |`bool` |If *true*, the `Source` property can be a wildcard pattern. |
 |Query |`string` |A query used to produce data for the update |
 |IsTransactional |`bool` |States if the update policy is transactional or not, default is *false*. If the policy is transactional and the update policy fails, the source table isn't updated. |
 |PropagateIngestionProperties  |`bool`|States if properties specified during ingestion to the source table, such as [extent tags](extent-tags.md) and creation time, apply to the target table. |
-|OwnerPrincipalDetails | `object` | A system-populated, read-only property. Contains the principal details of the user who sets or alters the update policy, used for authorization when the update policy query references external tables. This property is automatically set by the system and can't be modified manually. |
+|OwnerPrincipalDetails | `object` | A system-populated, read-only property. Contains the principal details of the user who sets or alters the update policy. This principal is used for authorization when the update policy query references external tables, and, in preview, to run the update policy asynchronously when `Source` is an external delta table. This property is automatically set by the system and can't be modified manually. |
 
 ::: moniker-end
 
@@ -144,6 +145,163 @@ Each such object is represented as a JSON property bag, with the following prope
 >
 > Cascading updates are allowed, for example from table A, to table B, to table C.
 > However, if update policies are defined in a circular manner, this is detected at runtime, and the chain of updates is cut. Data is ingested only once to each table in the chain.
+
+::: moniker range="azure-data-explorer"
+
+## Update policy over external delta tables (preview)
+
+> [!NOTE]
+> This capability is in preview.
+
+In addition to a native table, the `Source` of an update policy can be an external table, provided that:
+
+* The external table is of kind `delta`.
+* The external table has a [query acceleration policy](query-acceleration-policy.md) enabled.
+
+This capability lets you automatically ingest and transform new data from an external delta table into a native target table, without manual orchestration.
+
+### Example
+
+The following command configures `TargetTable` to ingest new rows from `ExternalDeltaTable`:
+
+````kusto
+.alter table TargetTable policy update
+```
+[
+    {
+        "IsEnabled": true,
+        "Source": "ExternalDeltaTable",
+        "Query": "ExternalDeltaTable | project Timestamp, Value",
+        "IsTransactional": false,
+        "PropagateIngestionProperties": false
+    }
+]
+```
+````
+
+### Requirements and limitations
+
+* The update policy's `IsTransactional` property must be *false*. Transactional update policies aren't supported when the source is an external table.
+* The update policy query can't reference other external tables.
+* Standard update policy requirements and limitations still apply, such as the source and target table being in the same database, and schema compatibility between the query results and the target table.
+* External tables that use impersonation authentication, or that have a [row level security policy](row-level-security-policy.md) enabled, aren't currently supported as an update policy source.
+
+### Processing behavior
+
+Unlike update policies over native tables, which run synchronously as part of ingestion, update policies over external delta tables run asynchronously on a periodic basis.
+
+> [!IMPORTANT]
+> The update policy processes data-changing `Add` actions in the Delta transaction log and ignores `Remove` actions. As a result, rows are never removed or modified in the target table.
+
+This behavior differs from update policies over native tables, where a [`.set-or-replace`](../management/data-ingestion/ingest-from-query.md) command on the source table can replace or remove data in derived target tables.
+
+| Delta operation | Effect on the target table |
+|---|---|
+| Add new data | Inserts the new rows. |
+| Update existing data | Inserts the updated rows. The previous rows aren't removed. |
+| Delete data | Takes no action. The deleted rows remain in the target table. |
+
+> [!NOTE]
+> For best results, enable deletion vectors on the source delta table. Without deletion vectors, partial delete or update operations on the source delta table might result in duplicate rows in the target table.
+
+### Querying the target table
+
+Querying the target table directly always returns up-to-date results by combining already-processed data with data from delta table versions that haven't been processed yet.
+
+To query only the already-processed data, for better performance at the expense of freshness, use the `materialized_table()` function:
+
+```kusto
+materialized_table("TargetTableName")
+```
+
+### Error handling
+
+* If the update policy encounters a permanent error, such as the external table becoming inaccessible or a schema mismatch, for seven consecutive days, the update policy is automatically disabled.
+
+### Cascading update policies
+
+You can define an update policy on the target table populated by an update policy over an external delta table. This second update policy behaves like a regular, synchronous update policy over a native table. The delta table-specific behavior described in this section applies only to the first hop, from the external delta table to the native target table.
+
+::: moniker-end
+::: moniker range="microsoft-fabric"
+
+## Update policy over external delta tables (preview)
+
+> [!NOTE]
+> This capability is in preview.
+
+In addition to a native table, the `Source` of an update policy can be an external table, provided that:
+
+* The external table is of kind `delta`, such as a [OneLake shortcut](/fabric/real-time-intelligence/onelake-shortcuts) to a delta table.
+* The external table has a [query acceleration policy](query-acceleration-policy.md) enabled.
+
+This capability lets you automatically ingest and transform new data from an external delta table into a native target table, without manual orchestration.
+
+### Example
+
+The following command configures `TargetTable` to ingest new rows from `ExternalDeltaTable`:
+
+````kusto
+.alter table TargetTable policy update
+```
+[
+    {
+        "IsEnabled": true,
+        "Source": "ExternalDeltaTable",
+        "Query": "ExternalDeltaTable | project Timestamp, Value",
+        "IsTransactional": false,
+        "PropagateIngestionProperties": false
+    }
+]
+```
+````
+
+### Requirements and limitations
+
+* The update policy's `IsTransactional` property must be *false*. Transactional update policies aren't supported when the source is an external table.
+* The update policy query can't reference other external tables.
+* Standard update policy requirements and limitations still apply, such as the source and target table being in the same database, and schema compatibility between the query results and the target table.
+* External tables that have a [row level security policy](row-level-security-policy.md) enabled aren't currently supported as an update policy source.
+
+### Processing behavior
+
+Unlike update policies over native tables, which run synchronously as part of ingestion, update policies over external delta tables run asynchronously on a periodic basis. The command runs on behalf of the principal in the update policy's `OwnerPrincipalDetails` property, which is populated automatically when the update policy is created or altered. Processing latency is comparable to other periodic processes, such as continuous export or materialized views.
+
+> [!IMPORTANT]
+> The update policy processes data-changing `Add` actions in the Delta transaction log and ignores `Remove` actions. As a result, rows are never removed or modified in the target table.
+
+This behavior differs from update policies over native tables, where a [`.set-or-replace`](../management/data-ingestion/ingest-from-query.md) command on the source table can replace or remove data in derived target tables. Because deletions on the external delta table source are always ignored, this data-loss scenario doesn't apply when the source is an external delta table: the target table only ever accumulates new data.
+
+| Delta operation | Effect on the target table |
+|---|---|
+| Add new data | Inserts the new rows. |
+| Update existing data | Inserts the updated rows. The previous rows aren't removed. |
+| Delete data | Takes no action. The deleted rows remain in the target table. |
+
+> [!NOTE]
+> For best results, enable deletion vectors on the source delta table. Without deletion vectors, partial delete or update operations on the source delta table might result in duplicate rows in the target table.
+
+### Querying the target table
+
+Similar to [materialized views](materialized-views/materialized-view-overview.md), querying the target table directly always returns up-to-date results by combining already-processed data with data from delta table versions that haven't been processed yet.
+
+To query only the already-processed data, for better performance at the expense of freshness, use the `materialized_table()` function:
+
+```kusto
+materialized_table("TargetTableName")
+```
+
+### Error handling
+
+* If the update policy encounters a permanent error, such as the external table becoming inaccessible or a schema mismatch, for seven consecutive days, the update policy is automatically disabled.
+* If a breaking change occurs on the source delta table, such as a partition column change, the update policy is automatically paused. You must resolve the issue and manually re-enable the update policy.
+* If the principal in `OwnerPrincipalDetails` no longer has access to the external table, the update policy fails until it's re-altered by a principal with sufficient permissions.
+
+### Cascading update policies
+
+You can define an update policy on the target table populated by an update policy over an external delta table. This second update policy behaves like a regular, synchronous update policy over a native table. The delta table-specific behavior described in this section applies only to the first hop, from the external delta table to the native target table.
+
+::: moniker-end
 
 ## Management commands
 

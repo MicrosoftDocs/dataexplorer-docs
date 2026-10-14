@@ -139,6 +139,7 @@ Materialized views and update policies work differently and serve different use 
 * [Materialized views policies](materialized-view-policies.md)
 * [Materialized views limitations and known issues](materialized-views-limitations.md)
 * [Monitor materialized views](materialized-views-monitoring.md)
+* [Materialized views optimization](materialized-views-optimization.md)
 * [`.create materialized view`](materialized-view-create.md)
 * [`.alter materialized-view`](materialized-view-alter.md)
 * [`{.disable | .enable} materialized-view`](materialized-view-enable-disable.md)

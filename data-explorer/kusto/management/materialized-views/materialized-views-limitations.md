@@ -23,7 +23,6 @@ ms.date: 06/03/2026
 * The source table of a materialized view can't be a table with a [restricted view access policy](../restricted-view-access-policy.md).
 * A materialized view can't be created on top of another materialized view, unless the first materialized view is of type `take_any(*)` aggregation. See [materialized view over materialized view](materialized-view-overview.md#materialized-view-over-materialized-view).
 * Materialized views can't be defined over [external tables](../../query/schema-entities/external-tables.md).
-* Materialized views cannot be queried with [cursors](../../query/database-cursor.md)
 
 > [!WARNING]
 >
@@ -58,11 +57,12 @@ ms.date: 06/03/2026
 
 ## Other
 
-* [Cursor functions](../database-cursor.md#cursor-functions) can't be used on top of materialized views.
+* [Cursor functions](../../query/database-cursor.md#cursor-functions) can't be used on top of materialized views.
 * Continuous export from a materialized view isn't supported.
 
 ## Related content
 
 * [Materialized views](materialized-view-overview.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
+* [Materialized views optimization](materialized-views-optimization.md)
 * [Monitor materialized views](materialized-views-monitoring.md)

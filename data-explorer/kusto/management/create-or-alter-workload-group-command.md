@@ -93,10 +93,6 @@ Create **MyWorkloadGroup** workload group with a full definition of its request 
     "MaxExecutionTime": {
       "IsRelaxable": true,
       "Value": "00:04:00"
-    },
-    "QueryResultsCacheMaxAge": {
-      "IsRelaxable": true,
-      "Value": "00:05:00"
     }
   }
 } ```
@@ -147,10 +143,6 @@ Create **My Workload Group** workload group with a full definition of its reques
     "MaxExecutionTime": {
       "IsRelaxable": true,
       "Value": "00:04:00"
-    },
-    "QueryResultsCacheMaxAge": {
-      "IsRelaxable": true,
-      "Value": "00:05:00"
     }
   },
   "RequestRateLimitPolicies": [

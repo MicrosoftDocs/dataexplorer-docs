@@ -3,7 +3,7 @@ title: Data Ingestion - Supported Formats and Compression
 description: Explore the various data formats like CSV, JSON, Parquet, and more, supported for ingestion. Understand compression options and best practices for data preparation.
 ms.reviewer: tzgitlin
 ms.topic: reference
-ms.date: 10/29/2025
+ms.date: 09/15/2026
 monikerRange: "azure-data-explorer || microsoft-fabric"
 ---
 # Data formats supported for ingestion
@@ -74,6 +74,12 @@ as an ingestion property because it can't be inferred.
 > * Some compression formats store the original file extension in the compressed stream. Ignore this extension when you determine the file format. If you can't determine the file format from the compressed blob or file name, specify it with the `format` ingestion property.
 > * Don't confuse these with internal chunk-level compression codecs used by `Parquet`, `AVRO`, and `ORC` formats. The internal compression name is usually added before the file format extension (for example, `file1.gz.parquet`, `file1.snappy.avro`).
 > * The [Deflate64/Enhanced Deflate](https://en.wikipedia.org/wiki/Deflate#Deflate64/Enhanced_Deflate) zip compression method isn't supported. Windows built-in zip compressor can use this method on files larger than 2 GB.
+
+### ZIP archive error handling
+
+By default, ingestion of a ZIP archive fails if any entry in the archive is empty or can't be parsed. To have ingestion continue past such entries instead of failing the whole archive, set the [`archiveBestEffort`](ingestion-properties.md#ingestion-properties) ingestion property to `true`. With this property set, the command skips empty or faulty entries and continues processing the remaining entries. Ingestion succeeds if at least one entry is successfully processed and produces records, and fails only if every entry in the archive is empty or faulty.
+
+This behavior applies only to entries within a ZIP archive that can be opened and read. It doesn't apply to files that aren't valid ZIP containers, or to compression formats other than ZIP.
 
 ## Related content
 

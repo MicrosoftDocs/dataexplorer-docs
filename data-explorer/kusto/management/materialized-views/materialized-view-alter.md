@@ -83,5 +83,6 @@ The following command modifies the query definition of materialized view MyView:
 
 * [Materialized views](materialized-view-overview.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
+* [Materialized views optimization](materialized-views-optimization.md)
 * [.create materialized-view](materialized-view-create.md)
 * [.create-or-alter materialized-view](materialized-view-create-or-alter.md)

@@ -12,6 +12,9 @@ monikerRange: "azure-data-explorer"
 
 > [!INCLUDE [applies](../../includes/applies-to-version/applies.md)] [!INCLUDE [fabric](../../includes/applies-to-version/fabric.md)] [!INCLUDE [azure-data-explorer](../../includes/applies-to-version/azure-data-explorer.md)]
 
+> [!IMPORTANT]
+> **Breaking change: action required by November 1, 2026.** To keep Azure Maps visuals rendering in the embedded web UI, update your hosting application to supply Azure Maps SAS tokens as described in [Embed Azure Maps rendering](#embed-azure-maps-rendering). Starting on this date, hosting applications that don't supply Azure Maps SAS tokens will no longer be able to render map visuals.
+
 You can embed the Azure Data Explorer web UI in an iframe and host it on third-party websites. This article describes how to embed the Azure Data Explorer web UI in an iframe.
 
 :::image type="content" source="../media/host-web-ux-in-iframe/web-ux.png" alt-text="Screenshot of the Azure Data Explorer web UI.":::
@@ -177,6 +180,35 @@ To embed a dashboard, you must establish a trust relationship between the host's
 > "f-ShowNavigation": false,
 > "f-DisableExploreQuery": false,
 > ```
+
+### Embed Azure Maps rendering
+
+To render Azure Maps visuals, the hosting application provides an Azure Maps shared access signature (SAS) token through `postMessage`. This is separate from Microsoft Entra authentication; keep your existing `getToken` handler.
+
+1. Create an Azure Maps account and a backend endpoint that generates short-lived SAS tokens.
+2. Extend your message handler to accept `getMapsToken` messages with `signature: "queryExplorer"` and a string `requestId`. Before obtaining a token, verify that `event.origin` is `https://dataexplorer.azure.com` and `event.source` is your iframe's `contentWindow`.
+3. Return the SAS token in a `postMapsToken` message with the same request ID. In this example, `iframeWindow` is the iframe's `contentWindow`, and `mapsSasToken` is the token obtained from your backend:
+
+   ```javascript
+   iframeWindow.postMessage({
+     signature: "queryExplorer",
+     type: "postMapsToken",
+     requestId: event.data.requestId,
+     token: mapsSasToken
+   }, "https://dataexplorer.azure.com");
+   ```
+
+Respond within 10 seconds. On failure, send `error: "mapsTokenUnavailable"` instead of `token`. The web UI requests new tokens when needed, so keep the handler registered and renew tokens through your backend.
+
+To test the new behavior before the deadline, add `f-enableAzureMapsSecureToken=true` to your iframe URL alongside `f-IFrameAuth=true`. On November 1, 2026, `f-enableAzureMapsSecureToken` will be enabled by default.
+
+> [!IMPORTANT]
+> Protect your token endpoint with the host application's authentication. Keep account keys on the server and never log tokens. If you restrict Azure Maps allowed origins, include `https://dataexplorer.azure.com`, where the map requests originate.
+
+Use these resources to set up and test SAS authentication:
+
+- [Bring Data Into View Control - Azure Maps Web SDK Samples](https://samples.azuremaps.com/controls/bring-data-into-view-control) - A sample that uses SAS token authentication.
+- [Azure Function code](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/main/Services/SampleFunctions/GetAzureMapsSaSToken.cs) - Token-generation logic only; replace its anonymous trigger and sample-site `Referer` check with the host application's authentication and origin checks before using it for an embedded web UI.
 
 ### Feature flags
 

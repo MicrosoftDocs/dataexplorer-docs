@@ -146,4 +146,4 @@ After the alert is triggered, data is sent to your Azure Data Explorer table. Yo
 
 ## Related content
 
-* [Write queries](kusto/query/tutorials/learn-common-operators.md)
+* [Write queries](/azure/data-explorer/kusto/query/tutorials/learn-common-operators)

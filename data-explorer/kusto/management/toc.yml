@@ -172,6 +172,8 @@ items:
             href: materialized-views/materialized-view-policies.md
           - name: Materialized views use cases
             href: materialized-views/materialized-view-use-cases.md
+          - name: Materialized views optimization
+            href: materialized-views/materialized-views-optimization.md
           - name: Materialized views data purge
             href: materialized-views/materialized-view-purge.md
           - name: Monitor materialized views
@@ -230,6 +232,12 @@ items:
             href: graph/graph-persistent-overview.md
           - name: Graph models overview
             href: graph/graph-model-overview.md
+          - name: Graph model policies
+            href: graph/graph-model-policies.md
+          - name: snapshot_indexing graph model policy
+            href: graph/graph-model-policy-snapshot-indexing.md
+          - name: graph_query graph model policy
+            href: graph/graph-model-policy-graph-query.md
           - name: .create-or-alter graph_model
             href: graph/graph-model-create-or-alter.md
           - name: .drop graph_model
@@ -598,6 +606,9 @@ items:
         items:
           - name: Query acceleration policy
             href: query-acceleration-policy.md
+            displayName: external table, delta table
+          - name: Update policy over external delta tables
+            href: update-policy.md#update-policy-over-external-delta-tables-preview
             displayName: external table, delta table
           - name: Query acceleration troubleshooting guide
             href: query-acceleration-troubleshooting-guide.md
