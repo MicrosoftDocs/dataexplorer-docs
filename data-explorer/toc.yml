@@ -378,29 +378,41 @@ items:
         displayName: connectors, tools, and integrations
       - name: Visualize dashboards in the web UI
         items:
-          - name: Use dashboards
-            href: azure-data-explorer-dashboards.md
-          - name: Explore data in dashboard tiles 
-            href: dashboard-explore-data.md
-          - name: Use dashboard parameters
-            href: dashboard-parameters.md
-          - name: Customize dashboard visuals
-            href: dashboard-customize-visuals.md
-          - name: Apply conditional formatting
-            href: dashboard-conditional-formatting.md
-          - name: Create a dashboard base query
-            href: base-query.md
-          - name: Dashboard-specific visuals
-            displayName: heat map, heatmap, funnel chart
-            href: dashboard-visuals.md
-          - name: Visualize sample data dashboards
-            href: web-ui-samples-dashboards.md
+          - name: Get started
+            items:
+              - name: Use dashboards
+                href: azure-data-explorer-dashboards.md
+              - name: Visualize sample data dashboards
+                href: web-ui-samples-dashboards.md
+          - name: Create and manage visuals
+            items:
+              - name: Customize dashboard visuals
+                href: dashboard-customize-visuals.md
+              - name: Dashboard-specific visuals
+                displayName: heat map, heatmap, funnel chart
+                href: dashboard-visuals.md
+              - name: Troubleshoot dashboard tile errors
+                href: dashboard-troubleshoot-tile-errors.md
+          - name: Customize dashboards
+            items:
+              - name: Apply conditional formatting
+                href: dashboard-conditional-formatting.md
+              - name: Use dashboard parameters
+                href: dashboard-parameters.md
+              - name: Create a dashboard base query
+                href: base-query.md
+          - name: Explore data
+            items:
+              - name: Explore data in dashboard tiles
+                href: dashboard-explore-data.md
+          - name: Monitor dashboards
+            items:
+              - name: Dashboard live refresh
+                href: dashboard-live-refresh.md
           - name: Share dashboards
-            href: azure-data-explorer-dashboard-share.md
-          - name: Dashboard live refresh
-            href: dashboard-live-refresh.md
-          - name: Troubleshoot dashboard tile errors
-            href: dashboard-troubleshoot-tile-errors.md
+            items:
+              - name: Share dashboards
+                href: azure-data-explorer-dashboard-share.md
       - name: Power BI
         items:
           - name: Use data in Power BI

@@ -323,6 +323,8 @@ items:
     href: /kusto/query/fork-operator?view=azure-data-explorer&preserve-view=true
   - name: getschema operator
     href: /kusto/query/getschema-operator?view=azure-data-explorer&preserve-view=true
+  - name: inline external table operator
+    href: /kusto/query/inline-external-table-operator?view=azure-data-explorer&preserve-view=true
   - name: invoke operator
     href: /kusto/query/invoke-operator?view=azure-data-explorer&preserve-view=true
   - name: join operator
@@ -1551,6 +1553,8 @@ items:
         href: /kusto/query/graph-query-language-functions?view=azure-data-explorer&preserve-view=true
     - name: openCypher
       href: /kusto/query/opencypher-graph-query-language?view=azure-data-explorer&preserve-view=true
+    - name: How to run GQL or openCypher queries
+      href: /kusto/query/run-graph-query-with-graph-reference?view=azure-data-explorer&preserve-view=true
 - name: Geospatial
   items:
   - name: Geospatial clustering

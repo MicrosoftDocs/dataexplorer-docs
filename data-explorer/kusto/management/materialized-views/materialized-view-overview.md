@@ -106,7 +106,7 @@ There are 2 ways to query a materialized view:
 
 When querying the entire view, the materialized part is combined with the `delta` during query time. This includes aggregating the `delta` and joining it with the materialized part.
 
-* Querying the entire view performs better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in the [`.create materialized-view` performance tips](materialized-view-create.md#performance-tips) section.
+* Querying the entire view performs better if the query includes filters on the group by keys of the materialized view query. See more tips about how to create your materialized view, based on your query pattern, in [Materialized views optimization](materialized-views-optimization.md).
 * The query optimizer chooses summarize/join strategies that are expected to improve query performance. For example, the decision on whether to [shuffle](../../query/shuffle-query.md) the query is based on number of records in `delta` part. The following [client request properties](../../api/rest/request-properties.md) provide some control over the optimizations applied. You can test these properties with your materialized view queries and evaluate their impact on queries performance.
 
 |Client request property name|Type|Description|
@@ -157,7 +157,7 @@ When querying the materialized part of the view, the return value depends on the
 The main contributors that can impact a materialized view health are:
 
 :::moniker range="azure-data-explorer"
-* **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](/azure/data-explorer/using-metrics#cluster-metrics). [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) currently doesn't take materialized views health under consideration as part of autoscale rules.
+* **Cluster resources:** Like any other process running on the cluster, materialized views consume resources (CPU, memory) from the cluster. If the cluster is overloaded, adding materialized views to it may cause a degradation in the cluster's performance. Monitor your cluster's health using [cluster health metrics](/azure/data-explorer/monitor-data-explorer-reference#supported-metrics-for-microsoftkustoclusters). [Optimized autoscale](/azure/data-explorer/manage-cluster-horizontal-scaling#optimized-autoscale-recommended-option) currently doesn't take materialized views health under consideration as part of autoscale rules.
   * The [materialization process](#how-materialized-views-work) is limited by the amount of memory and CPU it can consume. These limits are defined, and can be changed, in the [materialized views workload group](../workload-groups.md#materialized-views-workload-group).
 ::: moniker-end
   
@@ -169,7 +169,7 @@ The main contributors that can impact a materialized view health are:
 * **Number of materialized views in cluster:** The above considerations apply to each individual materialized view defined in the cluster. Each view consumes its own resources, and many views compete with each other on available resources. While there are no hard-coded limits to the number of materialized views in a cluster, the cluster may not be able to handle all materialized views, when there are many defined. The [capacity policy](../capacity-policy.md#materialized-views-capacity-policy) can be adjusted if there is more than a single materialized view in the cluster. Increase the value of `ClusterMinimumConcurrentOperations` in the policy to run more materialized views concurrently.
 ::: moniker-end
 
-* **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-view-create.md#performance-tips).
+* **Materialized view definition**: The materialized view definition must be defined according to query best practices for best query performance. For more information, see [create command performance tips](materialized-views-optimization.md).
 
 ## Materialized view over materialized view
 
@@ -183,6 +183,7 @@ A materialized view can be created over another materialized view if the source 
 * [Materialized views policies](materialized-view-policies.md)
 * [Materialized views limitations and known issues](materialized-views-limitations.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
+* [Materialized views optimization](materialized-views-optimization.md)
 * [Monitor materialized views](materialized-views-monitoring.md)
 * [`.create materialized view`](materialized-view-create.md)
 * [`.alter materialized-view`](materialized-view-alter.md)

@@ -1,6 +1,6 @@
 ---
 ms.topic: include
-ms.date: 08/11/2024
+ms.date: 09/15/2026
 ---
 
 ## Ingestion properties
@@ -14,6 +14,7 @@ The following table lists and describes the supported properties, and provides e
 |--|--|--|
 | `ingestionMapping` | A string value that indicates how to map data from the source file to the actual columns in the table. Define the `format` value with the relevant mapping type. See [data mappings](../management/mappings.md). | `with (format="json", ingestionMapping = "[{\"column\":\"rownumber\", \"Properties\":{\"Path\":\"$.RowNumber\"}}, {\"column\":\"rowguid\", \"Properties\":{\"Path\":\"$.RowGuid\"}}]")`<br>(deprecated: `avroMapping`, `csvMapping`, `jsonMapping`) |
 | `ingestionMappingReference` | A string value that indicates how to map data from the source file to the actual columns in the table using a named mapping policy object. Define the `format` value with the relevant mapping type. See [data mappings](../management/mappings.md). | `with (format="csv", ingestionMappingReference = "Mapping1")`<br>(deprecated: `avroMappingReference`, `csvMappingReference`, `jsonMappingReference`) |
+| `archiveBestEffort` | A Boolean value that, if set to `true`, indicates that ingestion from a ZIP archive should continue processing even if some entries in the archive are empty or faulty, instead of failing the whole ingestion. This property applies only to ZIP archives. By default, `false` is assumed. Ingestion succeeds if at least one entry is successfully processed and produces records. Ingestion fails if all entries in the archive are empty or faulty. | `with (archiveBestEffort=true)` |
 | `creationTime` | The datetime value (formatted as an ISO8601 string) to use at the creation time of the ingested data extents. If unspecified, the current value (`now()`) is used. Overriding the default is useful when ingesting older data, so that the retention policy is applied correctly. When specified, make sure the `Lookback` property in the target table's effective [Extents merge policy](../management/merge-policy.md) is aligned with the specified value. | `with (creationTime="2017-02-13")` |
 | `extend_schema` | A Boolean value that, if specified, instructs the command to extend the schema of the table (defaults to `false`). This option applies only to `.append` and `.set-or-append` commands. The only allowed schema extensions have more columns added to the table at the end. | If the original table schema is `(a:string, b:int)`, a valid schema extension would be `(a:string, b:int, c:datetime, d:string)`, but `(a:string, c:datetime)` wouldn't be valid |
 | `folder` | For [ingest-from-query](../management/data-ingestion/ingest-from-query.md) commands, the folder to assign to the table. If the table already exists, this property overrides the table's folder. | `with (folder="Tables/Temporary")` |
@@ -26,3 +27,6 @@ The following table lists and describes the supported properties, and provides e
 | `TreatGzAsUncompressed` | A Boolean value that, if set to `true`, indicates that files with the extension `.gz` are not compressed. This flag is sometimes needed when ingesting from Amazon AWS S3. | `with (treatGzAsUncompressed=true)` |
 | `validationPolicy` | A JSON string that indicates which validations to run during ingestion of data represented using CSV format. See [Data ingestion](/azure/data-explorer/ingest-data-overview) for an explanation of the different options. | `with (validationPolicy='{"ValidationOptions":1, "ValidationImplications":1}')` (this is the default policy) |
 | `zipPattern` | Use this property when ingesting data from storage that has a ZIP archive. This is a string value indicating the regular expression to use when selecting which files in the ZIP archive to ingest.  All other files in the archive are ignored. | `with (zipPattern="*.csv")` |
+
+> [!IMPORTANT]
+> Success reported for a ZIP archive ingested with `archiveBestEffort=true` doesn't guarantee that every file in the archive was ingested. Because per-entry failures are suppressed, use this property only when incomplete ingestion of the archive's contents is acceptable.

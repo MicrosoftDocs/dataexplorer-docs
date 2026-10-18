@@ -3,7 +3,7 @@ title:  .ingest into command (pull data from storage)
 description:  This article describes The .ingest into command (pull data from storage).
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 11/25/2024
+ms.date: 09/15/2026
 ---
 # .ingest into
 
@@ -71,6 +71,9 @@ If no data shards were generated, a single record is returned with an empty (zer
 
 >[!NOTE]
 > This command doesn't modify the schema of the table being ingested into. If necessary, the data is "coerced" into this schema during ingestion, not the other way around (extra columns are ignored, and missing columns are treated as null values).
+
+> [!NOTE]
+> If the [`archiveBestEffort`](../../ingestion-properties.md#ingestion-properties) ingestion property is set to `true`, the command can return `HasErrors=false` even when some empty or faulty entries in the ZIP archive were skipped. A successful result doesn't guarantee that every file in the archive was ingested.
 
 ## Examples
 

@@ -10,13 +10,13 @@ The following table describes the available customization properties, categorize
 | Section | Property | Description | Visual types |
 |--|--|--|--|
 | **Colors** | **Color palette** | Determines the set of colors to use for the heatmap. | Heatmap |
-| **Conditional formatting** | **Hide** or **Show** | A toggle option to turn off or turn on conditional formatting. For more information, see [Apply conditional formatting](../dashboard-conditional-formatting.md). | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Table, Time chart |
+| **Conditional formatting** | **Hide** or **Show** | A toggle option to turn off or turn on conditional formatting. For more information, see [Apply conditional formatting](../dashboard-conditional-formatting.md). | Anomaly chart, Area chart, Bar chart, Column chart, KPI, Multi Stat, Scatter chart, Table, Time chart |
 | **Data** | **Y columns** | The columns that provide data for the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, Line chart, Scatter chart, Time chart |
 |  | **X column** | The column that provides data for the horizontal axis. | Anomaly chart, Area chart, Bar chart, Column chart, Line chart, Scatter chart, Time chart |
 |  | **Series columns** | The columns used to categorize data into different series. | Anomaly chart, Area chart, Bar chart, Column chart, Line chart, Scatter chart, Time chart |
 |  | **Category column** | The column that determines the data categories. | Funnel chart, Heatmap, Pie chart |
 |  | **Label column** | Assigns labels to each slot using the designated column. | Multi Stat |
-|  | **Value column** | The column that provides data for the visualization. | Funnel chart, Multi stat |
+|  | **Value column** | The column that provides data for the visualization. | Funnel chart, KPI, Multi stat |
 |  | **Value** | The numeric column that serves as the primary variable for the heatmap. | Heatmap |
 |  | **Numeric column** | The column that provides the numeric value for the data category. | Pie chart |
 |  | **Define location by** | Determines the method used to define the location: **Infer**, **Latitude and longitude**, or **Geo point**. | Map |
@@ -36,6 +36,6 @@ The following table describes the available customization properties, categorize
 |  | **Vertical line value** | Specifies a value on the horizontal axis for vertical reference lines. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
 |  | **X axis scale** | Adjusts the scale of the horizontal axis to **linear** or **logarithmic**. | Anomaly chart, Area chart, Bar chart, Multi Stat, Scatter chart, Table, Time chart |
 | **Y Axis** | **Label** | Sets a custom label for the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
-|  | **Maximum value** | Defines the maximum value on the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
-|  | **Minimum value** | Defines the minimum value on the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
-|  | **Reference lines** | Marks a value on the chart as a reference line for visual guidance. | Anomaly chart, Area chart, Bar chart, Column chart, Multi Stat, Scatter chart, Time chart |
+|  | **Maximum value** | Defines the maximum value on the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, KPI, Multi Stat, Scatter chart, Time chart |
+|  | **Minimum value** | Defines the minimum value on the vertical axis. | Anomaly chart, Area chart, Bar chart, Column chart, KPI, Multi Stat, Scatter chart, Time chart |
+|  | **Reference lines** | Marks a value on the chart as a reference line for visual guidance. | Anomaly chart, Area chart, Bar chart, Column chart, KPI, Multi Stat, Scatter chart, Time chart |

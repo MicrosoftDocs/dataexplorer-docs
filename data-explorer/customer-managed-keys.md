@@ -11,7 +11,12 @@ ms.date: 03/15/2026
 
 Azure Data Explorer encrypts all data in a storage account at rest. By default, it uses Microsoft-managed keys for encryption. If you want more control over the encryption keys, you can provide customer-managed keys for data encryption.
 
-You must store customer-managed keys in an [Azure Key Vault](/azure/key-vault/key-vault-overview). You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the key vault must be in the same region, but they can be in different subscriptions. For a detailed explanation of customer-managed keys, see [customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption).
+You must store customer-managed keys in an [Azure Key Vault](/azure/key-vault/key-vault-overview) or [Azure Key Vault Managed HSM](/azure/security/fundamentals/encryption-customer-managed-keys-support). 
+
+> [!NOTE]
+> Configuring Azure Key Vault Managed HSM is only supported via API or REST calls
+
+You can create your own keys and store them in a key vault, or you can use an Azure Key Vault API to generate keys. The Azure Data Explorer cluster and the key vault must be in the same region, but they can be in different subscriptions. For a detailed explanation of customer-managed keys, see [customer-managed keys with Azure Key Vault](/azure/storage/common/storage-service-encryption).
 
 This article shows you how to configure customer-managed keys.
 

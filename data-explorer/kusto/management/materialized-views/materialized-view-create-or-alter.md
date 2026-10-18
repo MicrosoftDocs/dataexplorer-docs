@@ -88,5 +88,6 @@ For more information, see the [Query parameter](materialized-view-create.md#quer
 
 * [Materialized views](materialized-view-overview.md)
 * [Materialized views use cases](materialized-view-use-cases.md)
+* [Materialized views optimization](materialized-views-optimization.md)
 * [.create materialized-view](materialized-view-create.md)
 * [.alter materialized-view](materialized-view-alter.md)
