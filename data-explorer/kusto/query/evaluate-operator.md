@@ -3,7 +3,7 @@ title:  evaluate plugin operator
 description: Learn how to use the evaluate plugin operator to invoke plugins.
 ms.reviewer: alexans
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 10/14/2026
 ---
 # evaluate plugin operator
 
@@ -53,6 +53,7 @@ The following plugins are supported:
 * [bag-unpack plugin](bag-unpack-plugin.md)
 * [basket plugin](basket-plugin.md)
 * [cosmosdb-sql-request plugin](cosmosdb-plugin.md)
+* [dax_request plugin](dax-request-plugin.md)
 * [dcount-intersect plugin](dcount-intersect-plugin.md)
 * [diffpatterns plugin](diffpatterns-plugin.md)
 * [diffpatterns-text plugin](diffpatterns-text-plugin.md)
