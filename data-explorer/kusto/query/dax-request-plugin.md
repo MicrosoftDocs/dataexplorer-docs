@@ -3,7 +3,7 @@ title:  dax_request plugin
 description: Learn how to use the dax_request plugin to send a DAX query to a DAX server network endpoint. 
 ms.reviewer: gabil
 ms.topic: reference
-ms.date: 10/14/2026
+ms.date: 10/18/2026
 monikerRange: "microsoft-fabric || azure-data-explorer"
 ---
 
@@ -131,5 +131,5 @@ evaluate dax_request(
 |---|---|
 | Invalid connection string | Confirm that the URL uses a supported format, the workspace and semantic model IDs are valid GUIDs, and the string ends with `;Impersonate`. |
 | Callout isn't permitted | Configure the cluster callout policy to allow `dax` calls to `api.powerbi.com`. |
-| Authentication or authorization error | Confirm that the required tenant settings are enabled and that the requesting user has Build permission on the semantic model. |
+| Authentication or authorization error | Confirm that the required tenant settings are enabled and that the requesting user has Build and Read permission on the semantic model. |
 | HTTP request error | Ensure Power BI service availability, endpoint accessibility, and the semantic model URL. |
