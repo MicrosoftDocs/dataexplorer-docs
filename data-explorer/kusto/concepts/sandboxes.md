@@ -1,9 +1,9 @@
 ---
 title:  Sandboxes
 description:  This article describes Sandboxes.
-ms.reviewer: orspodek
+ms.reviewer: kareem-ismail
 ms.topic: reference
-ms.date: 08/11/2024
+ms.date: 10/13/2026
 monikerRange: "azure-data-explorer"
 ---
 # Sandboxes
@@ -71,18 +71,38 @@ The following table lists all modern VM sizes that support Hyper-V sandbox techn
 |---------------------------------------|-------------------|
 | Standard_L8s_v3                       | storage-optimized |
 | Standard_L16s_v3                      | storage-optimized |
+| Standard_L32s_v3                      | storage-optimized |
+| Standard_L8s_v4                       | storage-optimized |
+| Standard_L16s_v4                      | storage-optimized |
+| Standard_L32s_v4                      | storage-optimized |
 | Standard_L8as_v3                      | storage-optimized |
 | Standard_L16as_v3                     | storage-optimized |
+| Standard_L32as_v3                     | storage-optimized |
+| Standard_L8as_v4                      | storage-optimized |
+| Standard_L16as_v4                     | storage-optimized |
+| Standard_L32as_v4                     | storage-optimized |
+| Standard_L8aos_v4                     | storage-optimized |
+| Standard_L16aos_v4                    | storage-optimized |
+| Standard_L32aos_v4                    | storage-optimized |
 | Standard_E8as_v5                      | storage-optimized |
 | Standard_E16as_v5                     | storage-optimized |
+| Standard_E8as_v6                      | storage-optimized |
+| Standard_E16as_v6                     | storage-optimized |
 | Standard_E8s_v4                       | storage-optimized |
 | Standard_E16s_v4                      | storage-optimized |
 | Standard_E8s_v5                       | storage-optimized |
 | Standard_E16s_v5                      | storage-optimized |
+| Standard_E8s_v6                       | storage-optimized |
+| Standard_E16s_v6                      | storage-optimized |
 | Standard_E2ads_v5                     | compute-optimized |
 | Standard_E4ads_v5                     | compute-optimized |
 | Standard_E8ads_v5                     | compute-optimized |
 | Standard_E16ads_v5                    | compute-optimized |
+| Standard_E2ads_v6                     | compute-optimized |
+| Standard_E4ads_v6                     | compute-optimized |
+| Standard_E8ads_v6                     | compute-optimized |
+| Standard_E16ads_v6                    | compute-optimized |
+| Standard_E32ads_v6                    | compute-optimized |
 | Standard_E2d_v4                       | compute-optimized |
 | Standard_E4d_v4                       | compute-optimized |
 | Standard_E8d_v4                       | compute-optimized |
@@ -92,3 +112,15 @@ The following table lists all modern VM sizes that support Hyper-V sandbox techn
 | Standard_E8d_v5                       | compute-optimized |
 | Standard_E16d_v5                      | compute-optimized |
 | Standard_D32d_v4                      | compute-optimized |
+| Standard_D16d_v5                      | compute-optimized |
+| Standard_D32d_v5                      | compute-optimized |
+| Standard_D2ads_v6                     | compute-optimized |
+| Standard_D4ads_v6                     | compute-optimized |
+| Standard_D8ads_v6                     | compute-optimized |
+| Standard_D16ads_v6                    | compute-optimized |
+| Standard_D32ads_v6                    | compute-optimized |
+| Standard_D2ds_v6                      | compute-optimized |
+| Standard_D4ds_v6                      | compute-optimized |
+| Standard_D8ds_v6                      | compute-optimized |
+| Standard_D16ds_v6                     | compute-optimized |
+| Standard_D32ds_v6                     | compute-optimized |

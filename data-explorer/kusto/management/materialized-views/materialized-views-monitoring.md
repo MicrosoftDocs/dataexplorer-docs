@@ -18,7 +18,7 @@ Monitor the health of materialized views in the following ways:
 * Monitor [materialized view metrics](/fabric/real-time-intelligence/monitor-metrics#metric-specific-dimension-column) in your Microsoft Fabric workspace. Use the materialized view age metric, `MaterializedViewAgeSeconds`, as the primary metric to monitor the freshness of the view. For more information, see [Enable monitoring in your workspace](/fabric/get-started/enable-workspace-monitoring).
 
 ::: moniker-end
-* Monitor the `IsHealthy` property by using [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views).
+* Monitor the `IsHealthy` property by using [`.show materialized-view`](materialized-view-show-command.md#show-materialized-views). `IsHealthy` is `false` only when the view is stuck. For more information, see [When a materialized view is unhealthy](#when-a-materialized-view-is-unhealthy).
 
 * Inspect extent, hot-cache, size, and effective policy details by using [`.show materialized-view details`](materialized-view-show-details-command.md).
 
@@ -28,9 +28,31 @@ Monitor the health of materialized views in the following ways:
 >
 > Materialization never skips any data, even if there are constant failures. The view always returns the most up-to-date snapshot of the query, based on all records in the source table. Constant failures significantly degrade query performance, but don't cause incorrect results in view queries.
 
-## Troubleshooting unhealthy materialized views
+## When a materialized view is unhealthy
 
-If the `MaterializedViewAgeSeconds` metric constantly increases and the `MaterializedViewHealth` metric shows that the view is unhealthy, use the following symptoms to identify the root cause.
+`IsHealthy` is `false` only when both of the following conditions are true:
+
+* At least five consecutive materialization attempts failed.
+* `MaterializedTo` is more than one hour old and hasn't caught up to the database cursor.
+
+The view status is then `FAILED`. The view might recover on its own, such as when an overloaded cluster frees up resources, or it might need user intervention.
+
+If either condition isn't met, `IsHealthy` is `true`, regardless of the other. The following table shows examples:
+
+| Condition | `IsHealthy` |
+|---|---|
+| `MaterializedTo` is more than one hour old, but the view is catching up or processing an ingestion burst. | `true` |
+| `MaterializedTo` is more than one hour old because the view is queued due to concurrency limits. | `true` |
+| Fewer than five consecutive failures, regardless of lag. | `true` |
+| Five or more consecutive failures, but `MaterializedTo` is less than one hour old. | `true` |
+| Five or more consecutive failures, and `MaterializedTo` is more than one hour old and hasn't caught up to the database cursor (for example, repeated out-of-memory failures with no successful batch). | `false` |
+| The source table was dropped or the query is permanently invalid. | The view is automatically disabled and appears as `true`. Check `IsEnabled`. |
+
+A healthy view can still have an increasing age, and a disabled view doesn't materialize. Use the `MaterializedViewAgeSeconds` metric to monitor freshness, and check `IsHealthy` together with `IsEnabled`.
+
+## Troubleshooting materialized views
+
+If the `MaterializedViewAgeSeconds` metric constantly increases, or the view is unhealthy (`IsHealthy` is `false`), use the following symptoms to identify the root cause.
 
 :::moniker range="azure-data-explorer"
 
@@ -114,7 +136,7 @@ Check whether the [`MaterializedViewResult` metric](#materializedviewresult-metr
 
 Recurring `InsufficientCapacity` values indicate that available ingestion capacity is limiting materialization. Increase the resources available for materialization. For more information, see [Increase available resources](materialized-views-optimization.md#increase-available-resources).
 
-### Materialized view remains unhealthy
+### Materialized view remains unhealthy or keeps falling behind
 
 If the preceding diagnostics don't identify a specific cause, the service might not have sufficient capacity or resources to materialize all data on time. Increase available resources or split a memory-intensive view only after applying less disruptive optimizations. For more information, see [Optimize materialized views](materialized-views-optimization.md).
 
