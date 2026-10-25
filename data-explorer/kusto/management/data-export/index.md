@@ -11,25 +11,24 @@ ms.date: 11/27/2024
 
 Data export involves executing a Kusto query and saving its results. This process can be carried out either on the client side or the service side.
 
-For examples on data export, see [Related content](#related-content).
+## Export types
 
-## Client-side export
+For scalable data export, the service offers various `.export` management commands to export query results.
+This approach enhances scalability by avoiding the bottleneck of streaming through a single network connection.
 
-Client-side export gives you control over saving query results either to the local file system or pushing them to a preferred storage location. This flexibility is facilitated by using [Kusto client libraries](../../api/client-libraries.md). You can [create an app to run queries](../../api/get-started/app-basic-query.md), read the desired data, and implement an export process tailored to your requirements.
+**One-time export**
 
-::: moniker range="azure-data-explorer"
-Alternatively, you can use a client tool like the Azure Data Explorer web UI to export data from your Kusto cluster. For more information, see [Share queries](/azure/data-explorer/web-share-queries).
-::: moniker-end
+Use a one-time `.export` command to run a query and export its current results to a supported destination. This option is useful for ad hoc exports or exports managed by an external scheduler.
 
-## Service-side export (pull)
+* [Export to cloud storage](export-data-to-storage.md)
+* [Export to an external table](export-data-to-an-external-table.md)
+* [Export to a SQL table](export-data-to-sql.md)
 
-Use the [ingest from query](../../management/data-ingestion/ingest-from-query.md) commands to pull query results into a table in the same or different database. See the [performance tips](../../management/data-ingestion/ingest-from-query.md#performance-tips) before using these commands.
+**Continuous data export**
 
-## Service-side export (push)
+Continuous export automatically exports newly ingested data to an external table by using a recurring query. This option keeps exported data up to date without requiring you to run each export manually.
 
-For scalable data export, the service offers various `.export` management commands to push query results to [cloud storage](export-data-to-storage.md), an [external table](export-data-to-an-external-table.md), or an [SQL table](export-data-to-sql.md). This approach enhances scalability by avoiding the bottleneck of streaming through a single network connection.
-
-[Continuous data export](continuous-data-export.md) is supported for export to external tables.
+* [Continuous data export overview](continuous-data-export.md)
 
 > [!NOTE]
 > The `.export` management commands are limited by the available data export capacity of your database. Run the [.show capacity command](../show-capacity-command.md) to view the total, consumed, and remaining data export capacity.
