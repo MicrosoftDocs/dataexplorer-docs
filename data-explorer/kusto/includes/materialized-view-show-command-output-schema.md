@@ -13,7 +13,7 @@ ms.date: 02/03/2025
 | MaterializedTo | `datetime` | Maximum materialized ingestion_time() timestamp in source table. For more information, see [how materialized views work](../management/materialized-views/materialized-view-overview.md#how-materialized-views-work). |
 | LastRun | `datetime` | Last time materialization was run. |
 | LastRunResult | `string` | Result of last run. Returns `Completed` for successful runs, otherwise `Failed`. |
-| IsHealthy | `bool` | `true` when view is considered healthy, `false` otherwise. View is considered healthy if it was successfully materialized up to the last hour (`MaterializedTo` is greater than `ago(1h)`). |
+| IsHealthy | `bool` | `false` only when the view is stuck:<br>• At least five consecutive materialization attempts failed, and `MaterializedTo` is more than one hour old and hasn't caught up to the database cursor.<br>• The view status is `FAILED`.<br>• A view that's catching up, handling an ingestion burst, or waiting for a concurrency slot is `true`, even if its age exceeds one hour.<br>• A disabled view can also appear as `true`. Check `IsEnabled` as well. |
 | IsEnabled | `bool` | `true` when view is enabled (see [Disable or enable materialized view](../management/materialized-views/materialized-view-enable-disable.md)). |
 | Folder | `string` | Folder under which the materialized view is created. |
 | DocString | `string` | Description assigned to the materialized view. |

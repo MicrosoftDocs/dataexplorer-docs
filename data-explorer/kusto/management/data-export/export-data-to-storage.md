@@ -51,6 +51,20 @@ You must have at least [Database Viewer](../../access-control/role-based-access-
 | `distributed`              | `bool`   | Disable or enable distributed export. Setting to false is equivalent to `single` distribution hint. Default is true. |
 | `parquetDatetimePrecision` | `string` | The precision to use when exporting `datetime` values to Parquet. Possible values are millisecond and microsecond. Default is millisecond. |
 
+## Example
+
+The following example exports all records from `MyTable` to compressed CSV files in Azure Blob Storage. Each file includes column headers and uses `my-export` as its name prefix.
+
+```kusto
+.export compressed
+  to csv (h@"https://storageaccount.blob.core.windows.net/container;impersonate")
+  with (
+    includeHeaders="all",
+    namePrefix="my-export"
+  )
+  <| MyTable
+```
+
 ## Authentication and authorization
 
 The authentication method is based on the connection string provided, and the permissions required vary depending on the authentication method.
