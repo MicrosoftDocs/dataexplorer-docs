@@ -13,6 +13,9 @@ The `dax_request` plugin runs a Data Analysis Expressions (DAX) query against a 
 
 The plugin uses the Power BI [Execute DAX Queries API](/power-bi/developer/execute-dax-queries-arrow/overview), which returns results in Apache Arrow format. The plugin preserves supported column types when it converts the response to a KQL table.
 
+> [!NOTE]
+> The `dax_request` plugin is in preview.
+
 ## Prerequisites
 
 * The semantic model must be in a workspace assigned to a Fabric or Power BI Premium capacity.
@@ -34,7 +37,7 @@ Learn more about syntax conventions in the [Syntax conventions for reference doc
 | DaxQuery | `string` | Yes | The DAX query to execute against the semantic model. |
 | OutputSchema | - | - | The names and types of the expected output columns. Use the syntax `(`*ColumnName*`:`*ColumnType* [`,` ...]`)`. |
 
-> ![NOTE]
+> [!NOTE]
 > Specifying *OutputSchema* is recommended. It lets Kusto determine the plugin’s output columns and types without sending the DAX query to Power BI during schema discovery. The Power BI request is instead deferred to query execution, alongside the rest of the KQL query. The plugin returns an error if the returned schema is incompatible with the declared schema.
 
 ## Connection string
