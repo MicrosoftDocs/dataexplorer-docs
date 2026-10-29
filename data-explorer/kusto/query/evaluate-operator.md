@@ -54,6 +54,7 @@ The following plugins are supported:
 * [basket plugin](basket-plugin.md)
 * [cosmosdb-sql-request plugin](cosmosdb-plugin.md)
 * [dax_request plugin](dax-request-plugin.md)
+* [gql_request plugin](gql-request-plugin.md)
 * [dcount-intersect plugin](dcount-intersect-plugin.md)
 * [diffpatterns plugin](diffpatterns-plugin.md)
 * [diffpatterns-text plugin](diffpatterns-text-plugin.md)

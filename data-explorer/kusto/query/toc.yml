@@ -1705,6 +1705,8 @@ items:
             href: cosmosdb-plugin.md
           - name: dax_request plugin
             href: dax-request-plugin.md
+          - name: gql_request plugin
+            href: gql-request-plugin.md
           - name: http_request plugin
             href: http-request-plugin.md
           - name: http_request_post plugin
