@@ -3,7 +3,7 @@ title: .alter-merge query acceleration policy Command
 description: Learn how to use the .alter-merge query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 09/16/2025
+ms.date: 09/22/2026
 ---
 
 # `.alter-merge query acceleration policy` command
@@ -38,10 +38,13 @@ You must have at least [Database Admin](../access-control/role-based-access-cont
 | Property   			| Type       | Required           | Description                                                                                                                                                                                                               |
 | --------------------- | ---------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | IsEnabled  			| `Boolean`  |                    | Indicates whether the policy is enabled. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                                                                   |
-| Hot        			| `Timespan` |                    | The hot period defined in the query acceleration policy. Minimum value = 1 d. This property is required if no query acceleration policy is defined on the external table.                                                                                                                                             |
+| Hot        			| `Timespan` |                    | The rolling hot period for a static policy. Minimum value = 1 day. If no policy exists, specify `Hot` or both `MinHot` and `MaxHot`. Don't specify this property when configuring smart hot cache because the system manages its value. |
 | HotWindows 			| `DateTime` |                    | One or more optional time windows. Delta data files created within these time windows are accelerated.                                                                                                                    |
 | MaxAge     			| `Timespan` |                    | The external table returns accelerated data if the last index refresh time is greater than @now - MaxAge. Otherwise, external table operates in nonaccelerated mode. Default is 5 minutes. Minimum is 1 minute. |
 | HotDateTimeColumn     | `String`   |                    | Name of a datetime column used to determine hot-cache eligibility. A data file will be cached if its min/max stats for this column are within the configured Hot period and/or HotWindows. If not specified, eligibility is determined using the file modificationTime. Eligibility is computed using [delta log](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#add-file-and-remove-file) metadata only - setting this property does not add query-time overhead|
+| MinHot                | `Timespan` |                    | The minimum rolling hot period for [smart hot cache](smart-hot-cache.md). Must be specified together with `MaxHot`. Minimum value = 1 day. |
+| MaxHot                | `Timespan` |                    | The maximum rolling hot period for [smart hot cache](smart-hot-cache.md). Must be specified together with `MinHot`. |
+| Profile               | `String`   |                    | The smart hot cache optimization profile. Supported values are `Performance` (default) and `Cost`. |
 
 ### Example
 
@@ -55,6 +58,12 @@ In case the external table doesn't have query acceleration policy defined:
 
 ```json
 { "IsEnabled": true, "Hot": "1.00:00:00" }
+```
+
+To enable smart hot cache:
+
+```json
+{ "IsEnabled": true, "MinHot": "1.00:00:00", "MaxHot": "30.00:00:00", "Profile": "Performance" }
 ```
 
 

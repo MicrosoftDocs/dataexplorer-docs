@@ -607,6 +607,9 @@ items:
           - name: Query acceleration policy
             href: query-acceleration-policy.md
             displayName: external table, delta table
+          - name: Smart hot cache
+            href: smart-hot-cache.md
+            displayName: smart acceleration, adaptive hot cache, external table, delta table
           - name: Update policy over external delta tables
             href: update-policy.md#update-policy-over-external-delta-tables-preview
             displayName: external table, delta table
