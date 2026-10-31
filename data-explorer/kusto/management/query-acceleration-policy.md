@@ -3,7 +3,7 @@ title: Query acceleration policy
 description: Learn how to use the query acceleration policy to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 06/29/2026
+ms.date: 09/22/2026
 ---
 # Query acceleration policy
 
@@ -20,6 +20,8 @@ Query acceleration is supported in Eventhouse over OneLake, Azure Data Lake Stor
 
 To enable query acceleration in the Fabric UI, see [Query acceleration over OneLake shortcuts](https://go.microsoft.com/fwlink/?linkid=2296674).
 ::: moniker-end
+
+To automatically align the accelerated data period with observed query patterns, configure [smart hot cache](smart-hot-cache.md).
 
 > [!IMPORTANT]
 > To troubleshoot problems with query acceleration, see [Troubleshoot query acceleration over external delta tables](query-acceleration-troubleshooting-guide.md).
