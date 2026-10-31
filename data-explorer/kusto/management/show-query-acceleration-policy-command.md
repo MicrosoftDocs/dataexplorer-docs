@@ -3,7 +3,7 @@ title: .show query acceleration policy command
 description: Learn how to use the .show query acceleration policy command to accelerate queries over external delta tables.
 ms.reviewer: sharmaanshul
 ms.topic: reference
-ms.date: 09/16/2025
+ms.date: 09/22/2026
 ---
 
 # `.show query acceleration policy` command
@@ -50,7 +50,7 @@ The command returns a table with a record per external table with the following 
 
 | PolicyName              | EntityName                     | Policy                                                                                                                                                                     			 | ChildEntities | EntityType    |
 | ----------------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 			 | ------------- | ------------- |
-| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | `{<br> "IsEnabled": true,<br> "Hot": "1.00:00:00",<br> "HotWindows": [{"MinValue":"2025-07-06 07:53:55","MaxValue":"2025-07-07 07:53:55"}], "MaxAge": "5m", "HotDateTimeColumn":"dt1"}` |               | ExternalTable |
+| QueryAccelerationPolicy | [MyDatabase].[MyExternalTable] | `{<br> "IsEnabled": true,<br> "Hot": "7.00:00:00",<br> "MinHot": "1.00:00:00",<br> "MaxHot": "30.00:00:00",<br> "Profile": "Performance",<br> "MaxAge": "5m",<br> "HotDateTimeColumn": "dt1"<br>}` |               | ExternalTable |
 
 ## Related content
 
