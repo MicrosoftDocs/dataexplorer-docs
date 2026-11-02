@@ -81,6 +81,6 @@ To delete a data connection:
 
 ## Related content
 
-- [Upgrade your free cluster](start-for-free-upgrade.md)
+- [Move to a paid cluster](start-for-free-move-to-paid.md)
 - [Learn more about Azure Data Explorer](data-explorer-overview.md)
 - [Learn more about Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true)
