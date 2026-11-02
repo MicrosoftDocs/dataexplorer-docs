@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path": "start-for-free-upgrade.md",
+      "redirect_url": "/azure/data-explorer/start-for-free-move-to-paid",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "security-baseline.md",
       "redirect_url": "/security/benchmark/azure/baselines/data-explorer-security-baseline",
       "redirect_document_id": false
