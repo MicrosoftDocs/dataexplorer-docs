@@ -7,6 +7,7 @@ ms.topic: how-to
 ms.date: 11/01/2026
 ---
 
+
 # What is a free Azure Data Explorer cluster?
 
 Free cluster allows anyone with a Microsoft account or a Microsoft Entra user identity to create a [free Azure Data Explorer cluster](start-for-free-web-ui.md) without needing an Azure subscription or a credit card.
@@ -14,7 +15,7 @@ Free cluster allows anyone with a Microsoft account or a Microsoft Entra user id
 The free cluster can be used for any purpose and is the ideal solution for anyone who wants to get started quickly with Azure Data Explorer. It allows you to explore the wide range of [data ingestion](ingest-data-overview.md) methods, use the [Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true), and experience the incredible ingestion and query performance.
 
 > [!IMPORTANT]
->
+> 
 > * Microsoft grants you the right to access and use the **one** Free Cluster at no charge for commercial or non-commercial use for a period of one year.
 > * Microsoft may automatically renew the trial period.
 > * Your data is stored at a location of your choosing in one of three available geographies (Europe, Asia and North America).
@@ -47,6 +48,16 @@ When you're ready for production workloads, create a paid Azure Data Explorer cl
 
 > [!NOTE]
 > Your free cluster isn't converted, moved, or deleted automatically. You create the new cluster, migrate the data, and delete the free cluster yourself. The free cluster stays in place until you delete it, subject to the terms in the [Disclaimer](#disclaimer).
+
+The move has four steps:
+
+1. **Create a new cluster.** In the Azure portal, [create an Azure Data Explorer cluster and database](create-cluster-and-database.md) in your subscription. Choose the same region as your free cluster to keep latency low.
+1. **Export and import your data.** Export the schema and data from the free cluster and import them into the new cluster. Reapply permissions, data connections, and client connection strings.
+1. **Validate and switch.** Compare row counts, run your queries on the new cluster, and point your applications, dashboards, and ingestion to the new cluster URI.
+1. **Delete the free cluster.** After everything runs on the paid cluster, delete the free cluster from **My cluster**. This action is permanent.
+
+For step-by-step instructions and commands, see [Move from a free cluster to a paid Azure Data Explorer cluster](start-for-free-move-to-paid.md).
+
 ## Specifications
 
 The following table describes specifications and quotas for a free cluster.
@@ -96,7 +107,7 @@ The following special terms apply to Azure Data Explorer Free Clusters
 
 * Free clusters are provided "as-is," "with all faults," and "as available," and are excluded from all service level agreements and warranties.
 * Microsoft may suspend or delete clusters, if it is deemed necessary for preventing unauthorized access, abusive or malicious use.
-* Unless otherwise noted, you should not use the free cluster to process Personal Data or other data that is subject to legal or regulatory compliance requirements.
+* Unless otherwise noted, you should not use the free cluster to process Personal Data or other data that is subject to legal or regulatory compliance requirements. 
 * The following terms in the DPA do not apply to this Free Cluster: Processing of Personal Data; GDPR, Data Security, and HIPAA Business Associate.
 * Microsoft may change or discontinue the Free Cluster service at any time without notice.
 
@@ -109,13 +120,3 @@ The following special terms apply to Azure Data Explorer Free Clusters
 * [Try Microsoft Fabric for free](/fabric/fundamentals/fabric-trial)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
 * [Learn more about Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true)
-
-The move has four steps:
-
-1. **Create a new cluster.** In the Azure portal, [create an Azure Data Explorer cluster and database](create-cluster-and-database.md) in your subscription. Choose the same region as your free cluster to keep latency low.
-1. **Export and import your data.** Export the schema and data from the free cluster and import them into the new cluster. Reapply permissions, data connections, and client connection strings.
-1. **Validate and switch.** Compare row counts, run your queries on the new cluster, and point your applications, dashboards, and ingestion to the new cluster URI.
-1. **Delete the free cluster.** After everything runs on the paid cluster, delete the free cluster from **My cluster**. This action is permanent.
-
-For step-by-step instructions and commands, see [Move from a free cluster to a paid Azure Data Explorer cluster](start-for-free-move-to-paid.md).
-
