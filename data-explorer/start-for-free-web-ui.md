@@ -3,7 +3,7 @@ title: Create a free Azure Data Explorer cluster
 description: Learn how to create a free cluster, ingest data, and run queries to gain insights into your data.
 ms.reviewer: avnera
 ms.topic: how-to
-ms.date: 07/23/2026
+ms.date: 11/01/2026
 ai-usage: ai-assisted
 ---
 
@@ -27,7 +27,7 @@ A Microsoft account or a Microsoft Entra user identity to create a free cluster.
 
 On your cluster's overview page, you see the following:
 
-1. Your cluster's name, the option to upgrade to a full cluster, and the option to delete the cluster.
+1. Your cluster's name, the option to move to a paid cluster, the option to try Eventhouse in Microsoft Fabric for free, and the option to delete the cluster.
 1. Your cluster's location, policies, and URI links for connecting to your cluster via the [Kusto APIs](/kusto/api/index?view=azure-data-explorer&preserve-view=true) or other tools.
 1. [Quick actions](#quick-actions) you can take to get started with your cluster.
 1. A list of databases in your cluster.
@@ -49,7 +49,8 @@ To start a quick action, under **Actions**, select the action you want to perfor
 
 ## Related content
 
-* [Upgrade your free cluster](start-for-free-upgrade.md)
+* [Move from a free cluster to a paid Azure Data Explorer cluster](start-for-free-move-to-paid.md)
+* [Try Eventhouse in Microsoft Fabric for free](start-for-free.md#try-eventhouse-in-microsoft-fabric-for-free)
 * [Manage Event Hubs data connections in your free cluster](start-for-free-event-hubs.md)
 * [Learn more about Azure Data Explorer](data-explorer-overview.md)
 * [Learn more about Kusto Query Language](/kusto/query/index?view=azure-data-explorer&preserve-view=true)
