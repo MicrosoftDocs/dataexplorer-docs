@@ -457,7 +457,7 @@ Welcome to what's new in Azure Data Explorer archive. This article is an archive
 
 | Article title | Description |
 |--|--|
-| [Upgrade a free cluster](start-for-free-upgrade.md) | New Article. Describes how to upgrade a free cluster to a full cluster without losing your data. |
+| [Upgrade a free cluster](start-for-free-move-to-paid.md) | New Article. Describes how to upgrade a free cluster to a full cluster without losing your data. |
 
 **Management**
 
