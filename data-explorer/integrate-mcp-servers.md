@@ -2,8 +2,8 @@
 title: Use a Model Context Protocol (MCP) Server with Azure Data Explorer Clusters
 description: Learn how to use the Model Context Protocol (MCP) with Azure Data Explorer clusters to create AI agents and applications that analyze real-time data.
 ms.reviewer: sharmaanshul
-author: spelluru
-ms.author: spelluru
+author: vplauzon
+ms.author: vilauzon
 ms.topic: concept-article
 ms.date: 06/09/2026
 ms.search.form: MCP, AI, agents

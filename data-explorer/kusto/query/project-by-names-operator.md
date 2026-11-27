@@ -2,7 +2,7 @@
 title:  project-by-names operator
 description: Learn how to use the project-by-names operator to select a subset of columns from the input table by their names, dynamic arrays, or name patterns.
 ms.reviewer: alexans
-ms.author: v-hzargari
+ms.author: oronkaiser
 ms.topic: reference
 ms.date: 07/07/2025
 monikerRange: "microsoft-fabric || azure-data-explorer || azure-monitor || microsoft-sentinel "
