@@ -5,7 +5,7 @@ ms.reviewer: mibar
 ms.topic: how-to
 ms.date: 06/22/2026
 author: hzargari-ms
-ms.author: v-hzargari
+ms.author: vilauzon
 ---
 
 # Live refresh in Azure Data Explorer dashboard

@@ -2,7 +2,7 @@
 title: Azure Data Explorer cost per GB ingested 
 description: Discover how Azure Data Explorer calculates cost per GB ingested, what drives costs, and how to optimize your cluster.
 ms.reviewer: avnera
-ms.author: spelluru
+ms.author: vilauzon
 ms.topic: concept-article
 ms.date: 07/21/2025
 ms.search: Cost, pricing, Cost per GB, optimize, 

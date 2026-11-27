@@ -2,8 +2,8 @@
 title: "Migrate cluster to multiple availability zones (preview)"
 description: "Learn how to migrate your Azure Data Explorer cluster to support multiple availability zones for improved resiliency. Follow this step-by-step guide to get started."
 ms.date: 06/14/2026
-author: spelluru
-ms.author: spelluru
+author: vplauzon
+ms.author: vilauzon
 ms.reviewer: 
 ms.topic: how-to
 ---

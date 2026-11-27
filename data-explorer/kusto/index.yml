@@ -8,8 +8,8 @@ metadata:
   description: Kusto Query Language (KQL) is a dynamic and intuitive tool for querying all types of data, designed for easy authoring and clear query comprehension.
   ms.service: kusto
   ms.topic: landing-page
-  author: spelluru
-  ms.author: spelluru
+  author: oronkaiser-MSFT-nonEMU
+  ms.author: oronkaiser
   ms.date: 09/15/2025
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new

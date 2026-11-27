@@ -4,8 +4,8 @@ description: This article contains important reference material you need when yo
 ms.date: 04/16/2026
 ms.custom: horz-monitor
 ms.topic: reference
-author: spelluru
-ms.author: spelluru
+author: vplauzon
+ms.author: vilauzon
 ms.service: azure-data-explorer
 ---
 

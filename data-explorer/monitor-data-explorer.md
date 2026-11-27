@@ -4,8 +4,8 @@ description: Learn how to monitor Azure Data Explorer using Azure Monitor, inclu
 ms.date: 02/23/2026
 ms.custom: horz-monitor
 ms.topic: how-to
-author: spelluru
-ms.author: spelluru
+author: vplauzon
+ms.author: vilauzon
 ms.service: azure-data-explorer
 ---
 
