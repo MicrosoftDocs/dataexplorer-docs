@@ -2,7 +2,7 @@
 title: Graph sample datasets and examples
 description: Explore prebuilt graph sample datasets on the Kusto help cluster and learn how to query them with graph operators in Kusto Query Language (KQL).
 ms.topic: concept-article
-ms.author: spelluru
+ms.author: oronkaiser
 author: cosh
 ms.date: 07/23/2026
 ai-usage: ai-assisted
